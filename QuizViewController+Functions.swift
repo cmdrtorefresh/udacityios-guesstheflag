@@ -140,13 +140,10 @@ extension QuizViewController {
       flagButton1.hidden = true
       flagButton2.hidden = true
       flagButton3.hidden = true
-      
-      flagButton1.layer.borderColor = UIColor.blackColor().CGColor
-      flagButton1.layer.borderWidth = 5
-      flagButton2.layer.borderColor = UIColor.blackColor().CGColor
-      flagButton2.layer.borderWidth = 5
-      flagButton3.layer.borderColor = UIColor.blackColor().CGColor
-      flagButton3.layer.borderWidth = 5
+        
+      giveBorderToButton(flagButton1, borderWidth: 5, borderColor: UIColor.blackColor().CGColor)
+      giveBorderToButton(flagButton2, borderWidth: 5, borderColor: UIColor.blackColor().CGColor)
+      giveBorderToButton(flagButton3, borderWidth: 5, borderColor: UIColor.blackColor().CGColor)
       
       repeatPhraseButton.setTitle("Start Quiz", forState: UIControlState.Normal)
     } else if newState == .ReadyToSpeak {
@@ -162,6 +159,10 @@ extension QuizViewController {
     currentState = newState
   }
   
+  func giveBorderToButton(button: UIButton, borderWidth: CGFloat, borderColor: CGColor){
+    button.layer.borderColor = UIColor.blackColor().CGColor
+    button.layer.borderWidth = borderWidth
+  }
   
   enum QuizState {
     case NoQuestionUpYet, PlayingAudio, QuestionDisplayed, ReadyToSpeak
